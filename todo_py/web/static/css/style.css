@@ -1,0 +1,9 @@
+:root {
+    --py-blue: #3c78aa;
+    --py-yellow: #fdd835;
+}
+
+html,
+body {
+    height: 100%;
+}

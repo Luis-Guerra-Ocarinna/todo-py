@@ -1,0 +1,24 @@
+{
+    "python.analysis.typeCheckingMode": "basic",
+    "python.formatting.provider": "autopep8",
+    "emmet.includeLanguages": {
+        "jinja-html": "html",
+    },
+    "files.associations": {
+        "**/templates/*.html": "jinja-html",
+        "*.css": "tailwindcss",
+        "requirements*.txt": "pip-requirements"
+    },
+    "tailwindCSS.includeLanguages": {
+        "jinja-html": "html"
+    },
+    "material-icon-theme.files.associations": {
+        "*.html": "jinja",
+        "requirements.dev.txt": "python-misc",
+        "requirements.vscode.txt": "python-misc"
+    },
+    "python.testing.pytestEnabled": true,
+    "python.testing.pytestArgs": [
+        "todo_py/tests"
+    ],
+}
