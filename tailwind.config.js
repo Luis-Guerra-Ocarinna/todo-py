@@ -4,7 +4,13 @@ module.exports = {
     './todo_py/web/templates/**/*.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'py-blue': '#306998',
+        'py-yellow': '#FFD43B',
+      },
+    },
   },
   plugins: [],
+  darkMode: 'class'
 }

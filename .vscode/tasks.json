@@ -12,7 +12,8 @@
                 "-i",
                 "todo_py/web/static/css/src/tailwind.css",
                 "-o",
-                "todo_py/web/static/css/dist/tailwind.css"
+                "todo_py/web/static/css/dist/tailwind.css",
+                "--watch"
             ],
         }
     ]

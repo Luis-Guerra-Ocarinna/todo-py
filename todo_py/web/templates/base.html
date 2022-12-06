@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -12,32 +12,14 @@
 
         <link rel="shortcut icon" href="{{ url_for('web.static', filename='favicon.ico') }}" type="image/x-icon">
 
-        <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+        {# TODO: Future...? #}
+        {# <script defer src="https://pyscript.net/latest/pyscript.js"></script> #}
     </head>
-    <body>
+    <body class="dark:bg-slate-800 dark:text-slate-50">
+        {% block header %}{% endblock header %}
+
         {% block content %}{% endblock %}
 
-        <py-script>
-            from pyodide.ffi import create_proxy
-            from js import document
-
-            BLUE = "var(--py-blue)"
-            YELLOW = "var(--py-yellow)"
-
-            def toggle_colors(element):
-                element = document.body
-                if element.style.getPropertyValue('color') == BLUE:
-                    element.style.setProperty('color' ,YELLOW)
-                    element.style.setProperty('background-color' ,BLUE)
-                else:
-                    element.style.setProperty('color' ,BLUE)
-                    element.style.setProperty('background-color' ,YELLOW)
-
-            # change body background color on click
-            document.body.addEventListener(
-                "click",
-                create_proxy(toggle_colors),
-            )
-        </py-script>
+        {% block footer %}{% endblock footer %}
     </body>
 </html>
