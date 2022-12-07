@@ -1,19 +1,11 @@
-from flask import Flask
+from .app import FlaskApp
 
-from todo_py.api import api
-from todo_py.web import web
+from . import config
 
 
-def create_app(**config):
-    app = Flask(__name__)
+def create_app():
+    app = FlaskApp(__name__)
 
-    app.config.from_mapping(
-        STORAGE_FILE='data.json',
-    )
-
-    app.config.update(config)
-
-    app.register_blueprint(api)
-    app.register_blueprint(web)
+    config.init_app(app)
 
     return app

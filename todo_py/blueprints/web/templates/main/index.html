@@ -4,9 +4,13 @@
 
 {% block content %}
 <main class="container mx-auto p-4 text-2xl">
-    <form action="{{url_for('web.main.create')}}" method="post" class="flex mb-8">
+    <form action="{{url_for('web.main.create')}}" method="post" class="flex mb-8 gap-6">
         <input type="text" name="title" placeholder="Title" required
             class="bg-slate-900 bg-opacity-80 rounded-md px-2 py-1 w-72 flex-shrink-0 " />
+
+        <input type="text" name="description" placeholder="Description"
+            class="bg-slate-900 bg-opacity-80 rounded-md px-2 py-1 w-72 flex-shrink-0 " />
+
         <div class="flex-grow text-end">
             <button class="bg-py-blue rounded-md px-2 font-bold">Add</button>
         </div>
@@ -17,23 +21,28 @@
             <div class="flex-grow">
                 <h2 class="text-2xl font-bold">To Do</h2>
             </div>
+
             <div class="flex-shrink-0">
-                <span class="text-2xl font-bold">{{todos|selectattr("done","false")|list|length}}</span>
+                <span class="text-2xl font-bold">{{tasks|selectattr("done","false")|list|length}}</span>
             </div>
         </div>
 
-        {% for todo in todos %}
-        <form action="{{url_for('web.main.update', item_id=loop.index0)}}" method="post" class="flex flex-row gap-8">
-            <input type="text" name="title" value="{{todo.title}}"
+        {% for task in tasks %}
+        <form action="{{url_for('web.main.update', item_id=task.id)}}" method="post" class="flex flex-row gap-8">
+            <input type="text" name="title" value="{{task.title}}" required
                 class="bg-slate-900 bg-opacity-80 rounded-md px-2 py-1 w-72 flex-shrink-0 "
                 onchange="submit()" />
 
-            <input type="checkbox" name="done" {% if todo.done %} checked {% endif %}
+            <input type="text" name="description" value="{{task.description|default('', true)}}"
+                class="bg-slate-900 bg-opacity-80 rounded-md px-2 py-1 w-72 flex-shrink-0 "
+                onchange="submit()" />
+
+            <input type="checkbox" name="done" {% if task.done %} checked {% endif %}
                 class="scale-150 checked:accent-py-yellow"
                 onchange="submit()" />
 
             <div class="flex-grow text-end">
-                <a href="{{url_for('web.main.delete', item_id=loop.index0)}}"
+                <a href="{{url_for('web.main.delete', item_id=task.id)}}"
                     class="bg-red-600 rounded-md px-2 font-bold">Delete</a>
             </div>
         </form>

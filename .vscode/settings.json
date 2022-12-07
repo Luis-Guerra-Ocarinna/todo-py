@@ -5,7 +5,7 @@
         "jinja-html": "html",
     },
     "files.associations": {
-        "**/templates/*.html": "jinja-html",
+        "**/templates/**/*.html": "jinja-html",
         "*.css": "tailwindcss",
         "requirements*.txt": "pip-requirements"
     },
