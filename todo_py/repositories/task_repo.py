@@ -1,10 +1,12 @@
 # refact
 
 import json
+import os
 
 from todo_py.models.task import Task
 
-PATH = 'todo-py-{user}-tasks.json'
+PATH = 'eggs/todo-py-{user}-tasks.json'
+os.makedirs(os.path.dirname(PATH), exist_ok=True)
 
 
 def save(tasks, user):

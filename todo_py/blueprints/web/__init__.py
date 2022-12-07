@@ -1,6 +1,6 @@
 from flask import Blueprint
 
-
+from .views.auth import auth
 from .views.main import main
 
 web = Blueprint('web', __name__,
@@ -9,6 +9,7 @@ web = Blueprint('web', __name__,
                 static_url_path='/web/static')
 
 web.register_blueprint(main)
+web.register_blueprint(auth)
 
 
 def init_app(app):

@@ -1,12 +1,18 @@
 import json
+import os
 
 from todo_py.models.user import User
 
-PATH = 'todo-py-users.json'
+PATH = 'eggs/todo-py-users.json'
+os.makedirs(os.path.dirname(PATH), exist_ok=True)
 
 
-def save(user):
-    pass
+def save(users):
+    with open(PATH, 'w', encoding='utf-8') as file:
+        json.dump(users, file,
+                  default=lambda o: o.__dict__,
+                  sort_keys=True,
+                  indent=4)
 
 
 def load():
@@ -27,7 +33,11 @@ def load():
 
 
 def add(user):
-    pass
+    users = load()
+
+    users.append(user)
+
+    return save(users)
 
 
 def get_by_username(username):
