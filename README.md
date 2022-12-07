@@ -1,5 +1,6 @@
 # todo-py
-WebApp TODO lol
+Realizado por: Luis Rosa
+Objetivo: Lista de afazres com autenticação de usuário
 
 Reference Architecture: [Bruno Rocha - CodeShow: Arquitetura Definitiva para o Projeto Web Com Python e Flask](https://www.youtube.com/watch?v=-qWySnuoaTM)
 

@@ -20,7 +20,7 @@ def register():
 
         if user_repo.get_by_username(username):
             flash('Username already taken')
-            return redirect(request.url)
+            return redirect(request.referrer)
 
         password = generate_password_hash(request.form['password'])
 
@@ -47,11 +47,11 @@ def login():
 
         if not user:
             flash('No user found')
-            return redirect(request.url)
+            return redirect(request.referrer)
 
         if not check_password_hash(user.password, password):
             flash('Wrong password')
-            return redirect(request.url)
+            return redirect(request.referrer)
 
         login_user(user, remember=True)
 

@@ -46,7 +46,7 @@ def get_all(user):
     return load(user)
 
 
-def get_by_id(task_id, user) -> Task | None:
+def get_by_id(task_id, user):
     tasks = load(user)
     return next((task for task in tasks if task.id == task_id), None)
 
